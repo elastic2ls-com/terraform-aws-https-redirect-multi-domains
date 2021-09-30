@@ -1,0 +1,19 @@
+stage: "prod"
+target_domain: "www.elastic2ls.com"
+project_name: "redirects"
+aws_region: us-east-1
+
+source_domains:
+  elastic2ls.com:
+    - elastic2ls.com
+    - www.elastic2ls.com
+    - image.elastic2ls.com
+    - m.elastic2ls.com
+    - static.elastic2ls.com
+
+  elastic2ls.com:
+    - elastic2ls.com
+    - www.elastic2ls.com
+    - image.elastic2ls.com
+    - m.elastic2ls.com
+    - static.elastic2ls.com
