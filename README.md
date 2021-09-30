@@ -41,3 +41,5 @@ source = "git@github.com:elastic2ls/terraform-aws-https-redirect-multi-domains.g
   aws_region = var.aws_region
 }
 ```
+
+The module can also be found in the Terraform Registry https://registry.terraform.io/modules/elastic2ls-com/https-redirect-multi-domains/aws/latest.
