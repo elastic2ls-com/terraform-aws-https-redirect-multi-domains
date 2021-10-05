@@ -1,5 +1,10 @@
 # Terraform module for S3 redirects with CloudFront, ACM
 
+<p align="center">
+<img src="/assets/img/Logo_box-1-150x150.png">
+</p>
+<p>&nbsp;</p>
+
 This module helps you create a S3 bucket which performs HTTPS redirects for multiple domains. This can scale to as much domains you will enter in settings.yaml.
 
 It includes the following:
