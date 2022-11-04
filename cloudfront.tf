@@ -16,7 +16,7 @@ resource "aws_cloudfront_distribution" "this" {
   
   logging_config {
     include_cookies = false
-    bucket          = "logs.s3.amazonaws.com"
+    bucket          = "log_bucket.s3.amazonaws.com"
     prefix          = "myprefix"
   }
 
@@ -53,15 +53,5 @@ resource "aws_cloudfront_distribution" "this" {
     ssl_support_method       = "sni-only"
     minimum_protocol_version       = "TLSv1.2_2019"
 
-  }
-}
-
-resource "aws_s3_bucket" "this" {
-  bucket = "logs"
-
-  block_public_acls       = true
-  
-  tags = {
-    Name = "logs"
   }
 }
