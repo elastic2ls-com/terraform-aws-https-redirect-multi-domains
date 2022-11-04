@@ -59,6 +59,8 @@ resource "aws_cloudfront_distribution" "this" {
 resource "aws_s3_bucket" "this" {
   bucket = "logs"
 
+  block_public_acls       = true
+  
   tags = {
     Name = "logs"
   }
