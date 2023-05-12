@@ -1,8 +1,8 @@
 resource "aws_s3_bucket" "this" {
   bucket = "${var.project_name}-${var.aws_account_id}"
-   website {
-    redirect_all_requests_to = "https://${var.target_domain}"
-  }
+  website {
+   redirect_all_requests_to = "https://${var.target_domain}"
+ }
 
   tags = merge(
     var.tags,
@@ -28,7 +28,6 @@ resource "aws_kms_key" "this" {
 
 resource "aws_s3_bucket_server_side_encryption_configuration" "this" {
   bucket = aws_s3_bucket.this.bucket
-
   rule {
     apply_server_side_encryption_by_default {
       kms_master_key_id = aws_kms_key.this.arn
@@ -36,7 +35,6 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "this" {
     }
   }
 }
-
 
 resource "aws_s3_bucket_versioning" "this" {
   bucket = aws_s3_bucket.this.id
@@ -56,9 +54,6 @@ resource "aws_s3_bucket_versioning" "log_bucket" {
 
 resource "aws_s3_bucket" "log_bucket" {
   bucket = "log_bucket"
-  block_public_acls = true
-  aws_s3_bucket_public_access_block = true
-
 }
 
 resource "aws_s3_bucket_public_access_block" "log" {
