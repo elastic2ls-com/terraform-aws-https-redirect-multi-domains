@@ -1,7 +1,8 @@
 resource "aws_s3_bucket" "this" {
   bucket = "${var.project_name}-${var.aws_account_id}"
   
-  block_public_acls       = true
+  block_public_acls = true
+  aws_s3_bucket_public_access_block = true
 
   website {
     redirect_all_requests_to = "https://${var.target_domain}"
@@ -17,6 +18,7 @@ resource "aws_s3_bucket" "this" {
 
 resource "aws_kms_key" "this" {
   deletion_window_in_days = 10
+  enable_key_rotation = true
 }
 
 resource "aws_s3_bucket_server_side_encryption_configuration" "this" {
@@ -36,6 +38,7 @@ resource "aws_s3_bucket_versioning" "this" {
   versioning_configuration {
     status = "Enabled"
   }
+  versioning.mfa_delete = true
 }
 
 resource "aws_s3_bucket_versioning" "log_bucket" {
@@ -43,11 +46,14 @@ resource "aws_s3_bucket_versioning" "log_bucket" {
   versioning_configuration {
     status = "Enabled"
   }
+  versioning.mfa_delete = true
 }
 
 resource "aws_s3_bucket" "log_bucket" {
   bucket = "log_bucket"
-  block_public_acls       = true
+  block_public_acls = true
+  aws_s3_bucket_public_access_block = true
+
 }
 
 resource "aws_s3_bucket_acl" "log_bucket_acl" {
